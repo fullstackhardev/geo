@@ -21,7 +21,7 @@ class GeoLocationLogController extends Controller
     {
         $geoLocationService = new AbstractApiService();
 
-        $geoInfo = $geoLocationService->getIpGeoLocation();
+        $geoInfo = $geoLocationService->getIpGeoLocation($request->ip());
 
         return view('geo-location-logs.show', [
             'geoInfo' => $geoInfo

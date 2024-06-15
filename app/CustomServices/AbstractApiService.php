@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\Http;
 
 class AbstractApiService
 {
-    public function getIpGeoLocation()
+    public function getIpGeoLocation($ipAddress)
     {
         $url = "https://ipgeolocation.abstractapi.com/v1";
         $params = [
             'api_key' => config('services.abstract_api.key'),
+            'ip_address' => $ipAddress
         ];
 
         try {
@@ -33,7 +34,7 @@ class AbstractApiService
             return $responseBody;
         } catch (\Exception $e) {
 
-            info("IP Geo location log for " . $response['ip_address'], [
+            info("IP Geo location log for $ipAddress", [
                 'response' => $response,
                 'exception-message' => $e->getMessage()
             ]);
