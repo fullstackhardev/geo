@@ -3,7 +3,7 @@
 use App\Http\Controllers\GeoLocationLogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Services\AbstractApiService;
+use App\CustomServices\AbstractApiService;
 
 /*
 |--------------------------------------------------------------------------

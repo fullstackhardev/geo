@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\CustomServices;
 
 use App\Models\GeoLocationLog;
 use Illuminate\Support\Facades\Http;

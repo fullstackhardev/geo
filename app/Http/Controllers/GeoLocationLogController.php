@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GeoLocationLog;
-use App\Services\AbstractApiService;
+use App\CustomServices\AbstractApiService;
 use Illuminate\Http\Request;
 
 class GeoLocationLogController extends Controller
