@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class GeoLocationLog extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }
