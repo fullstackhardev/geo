@@ -28,8 +28,7 @@ class GeoLocationLogController extends Controller
         }
 
         if (!$ip) {
-            $response = Http::get('https://api.ipify.org');
-            $ip = $response->body();
+            $ip = $request->ip();
         }
 
         $cacheKey = "GEO_LOCATION_CACHE_KEY $ip";
