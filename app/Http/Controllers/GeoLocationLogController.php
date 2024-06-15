@@ -40,7 +40,7 @@ class GeoLocationLogController extends Controller
             $geoLocationService = new AbstractApiService();
             $geoInfo = $geoLocationService->getIpGeoLocation($ip);
 
-            Cache::put($cacheKey, $geoInfo);
+            Cache::put($cacheKey, $geoInfo, 60 * 60 * 24);
         }
 
         return view('geo-location-logs.show', [
