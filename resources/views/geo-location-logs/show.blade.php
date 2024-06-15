@@ -11,6 +11,7 @@
         <div class="w-full max-w-md p-4 rounded-lg shadow-md">
             @if (Arr::has($geoInfo, 'longitude') && Arr::has($geoInfo, 'latitude'))
                 <ul class="list-disc space-y-2">
+                    <li>IP Address: <span class="font-bold">{{ Arr::get($geoInfo, 'ip_address') }}</span></li>
                     <li>Country: <span class="font-bold">{{ Arr::get($geoInfo, 'country') }}</span></li>
                     <li>City: <span class="font-bold">{{ Arr::get($geoInfo, 'city') }}</span></li>
                     <li>Region: <span class="font-bold">{{ Arr::get($geoInfo, 'region') }}</span></li>
