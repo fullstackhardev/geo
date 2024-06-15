@@ -14,12 +14,12 @@ class AbstractApiService
             'api_key' => config('services.abstract_api.key'),
         ];
 
-
         try {
             $response = Http::get($url, $params);
             $responseBody = $response->json();
 
             if ($response->successful()) {
+
                 GeoLocationLog::create([
                     'ip_address' => $responseBody['ip_address'],
                     'country' => $responseBody['country'],
