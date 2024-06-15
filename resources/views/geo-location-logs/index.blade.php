@@ -19,7 +19,7 @@
                     <th class="py-4 px-6">City</th>
                     <th class="py-4 px-6">Latitude</th>
                     <th class="py-4 px-6">Longitude</th>
-                    {{-- <th class="py-4 px-6">Actions</th> --}}
+                    <th class="py-4 px-6">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,9 +32,9 @@
                         <td class="py-4 px-6">{{ $geoLocationLog->city }}</td>
                         <td class="py-4 px-6">{{ $geoLocationLog->latitude }}</td>
                         <td class="py-4 px-6">{{ $geoLocationLog->longitude }}</td>
-                        {{-- <td class="py-4 px-6">
-                            <a href="{{ route('geo-logs.destroy', $geoLocationLog->id) }}" title="Delete">❌</a>
-                        </td> --}}
+                        <td class="py-4 px-6">
+                            <a href="{{ route('geo-location-log.show', $geoLocationLog) }}" title="View">👀</a>
+                        </td>
                     </tr>
                 @empty
                     <tr class="text-center py-4">

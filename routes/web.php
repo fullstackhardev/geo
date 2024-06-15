@@ -3,7 +3,6 @@
 use App\Http\Controllers\GeoLocationLogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\CustomServices\AbstractApiService;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +16,7 @@ use App\CustomServices\AbstractApiService;
 */
 
 Route::get('/', function (Request $request) {
-    $ipLogService = new AbstractApiService();
-
-    $geoLocation = $ipLogService->getIpGeoLocation($request->ip());
-
-    if (is_array($geoLocation)) {
-        return view('welcome');
-    } else {
-        return $geoLocation;
-    }
+    return view('welcome');
 })->name('welcome');
 
-Route::resource('/geo-logs', GeoLocationLogController::class);
+Route::resource('/geo-location-log', GeoLocationLogController::class);

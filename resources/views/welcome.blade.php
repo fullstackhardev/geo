@@ -394,9 +394,10 @@
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         <div class="hidden fixed top-0 left-0 px-6 py-4 sm:block">
-            <a href="{{ route('geo-logs.index') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Geo
+            <a href="{{ route('geo-location-log.index') }}"
+                class="text-sm text-gray-700 dark:text-gray-500 underline">Geo
                 Logs</a>
-            <a href="{{ route('geo-logs.create') }}"
+            <a href="{{ route('geo-location-log.create') }}"
                 class="text-sm px-6 text-gray-700 dark:text-gray-500 underline">Click here to find yourself on 🌍</a>
             {{-- <a href="{{ url('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a> --}}
         </div>
@@ -545,7 +546,8 @@
                     </div>
                 </div>
 
-                <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0"
+                    title="{{ request()->ip() }}">
                     Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                 </div>
             </div>

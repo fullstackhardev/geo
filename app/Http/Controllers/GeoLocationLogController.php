@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\GeoLocationLog;
 use App\CustomServices\AbstractApiService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 class GeoLocationLogController extends Controller
 {
@@ -19,12 +21,38 @@ class GeoLocationLogController extends Controller
 
     public function create(Request $request)
     {
-        $geoLocationService = new AbstractApiService();
+        $ip = $request->get('custom_ip');
 
-        $geoInfo = $geoLocationService->getIpGeoLocation($request->ip());
+        if ($request->has('custom_ip') && !$request->get('custom_ip')) {
+            return 'kindly specify custom ip address';
+        }
+
+        if (!$ip) {
+            $response = Http::get('https://api.ipify.org');
+            $ip = $response->body();
+        }
+
+        $cacheKey = "GEO_LOCATION_CACHE_KEY $ip";
+        $geoInfo = [];
+
+        if (Cache::has($cacheKey)) {
+            $geoInfo = Cache::get($cacheKey);
+        } else {
+            $geoLocationService = new AbstractApiService();
+            $geoInfo = $geoLocationService->getIpGeoLocation($ip);
+
+            Cache::put($cacheKey, $geoInfo);
+        }
 
         return view('geo-location-logs.show', [
             'geoInfo' => $geoInfo
+        ]);
+    }
+
+    public function show(Request $request, GeoLocationLog $geoLocationLog)
+    {
+        return view('geo-location-logs.show', [
+            'geoInfo' => $geoLocationLog
         ]);
     }
 }

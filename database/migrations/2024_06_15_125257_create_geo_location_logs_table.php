@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('geo_location_logs', function (Blueprint $table) {
             $table->id();
             $table->string('ip_address');
-            $table->string('country');
-            $table->string('region');
-            $table->string('city');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->string('country')->nullable();
+            $table->string('region')->nullable();
+            $table->string('city')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->timestamps();
         });
     }
